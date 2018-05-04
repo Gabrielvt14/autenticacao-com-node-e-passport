@@ -26,6 +26,7 @@ app.get('*', passport.authenticate('basic', { session: false }))
 require('./src/index')(app)
 
 mongoose.connect('mongodb://localhost:27017/auth')
+mongoose.Promise = global.Promise
 
 app.listen(process.env.PORT, () => {
     console.log('Server has been started at http://localhost:' + process.env.PORT)
